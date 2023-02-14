@@ -1,32 +1,20 @@
 package geometry;
 
-public class Vec2<T extends Number> {
+public class Vec2{
 	/* Instance Variables */
-	T x, y;
+	double x, y;
 	
 	/* Constructors */
 	
 	public Vec2() {}
-	public Vec2(T x) {
-		this.x = x;
-		this.y = x;
-	}
-	public Vec2(T x, T y) {
-		this.x = x;
-		this.y = y;
-	}
+	public Vec2(double xx) {x = xx; y = xx;}
+	public Vec2(double xx, double yy) {x = xx; y = yy;}
 	
 	/* Methods */
-	
-	//Whoever decided to not have operator overloading in java can go fuck themselves
-	@SuppressWarnings("unchecked")
-	public Vec2<T> add  (Vec2<T> v) {return new Vec2<T>((T) (Number) (x.doubleValue() + v.x.doubleValue()), (T) (Number) (y.doubleValue() + v.y.doubleValue()));} 
-	@SuppressWarnings("unchecked")
-	public Vec2<T> div  (Vec2<T> v) {return new Vec2<T>((T) (Number) (x.doubleValue() / v.x.doubleValue()), (T) (Number) (y.doubleValue() / v.y.doubleValue()));} 
-	@SuppressWarnings("unchecked")
-	public Vec2<T> mult (Vec2<T> v) {return new Vec2<T>((T) (Number) (x.doubleValue() * v.x.doubleValue()), (T) (Number) (y.doubleValue() * v.y.doubleValue()));} 
-	@SuppressWarnings("unchecked")
-	public Vec2<T> mult (T    v) {return new Vec2<T>((T) (Number) (x.doubleValue() *   v.doubleValue()), (T) (Number) (y.doubleValue() *   v.doubleValue()));} 
+	public Vec2 add  (Vec2 v)   {return new Vec2(x + v.x, y + v.y);} 
+	public Vec2 div  (Vec2 v)   {return new Vec2(x / v.x, y / v.y);} 
+	public Vec2 mult (Vec2 v)   {return new Vec2(x * v.x, y * v.y);} 
+	public Vec2 mult (double v) {return new Vec2(x *   v, y *   v);} 
 	public String toString() {return "[" + x + "," + y + "]";}
 }
 
