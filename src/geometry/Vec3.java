@@ -2,12 +2,12 @@ package geometry;
 
 public class Vec3{
 	/* Instance Variables */
-	public double x, y, z;
+	public float x, y, z;
 	
 	/* Constructors */
 	public Vec3() {}
-	public Vec3(double xx) {x = xx; y = xx; z = xx;}
-	public Vec3(double xx, double yy, double zz) {x = xx; y = yy; z = zz;}
+	public Vec3(float xx) {x = xx; y = xx; z = xx;}
+	public Vec3(float xx, float yy, float zz) {x = xx; y = yy; z = zz;}
 	
 	/* Methods */
 	
@@ -17,13 +17,13 @@ public class Vec3{
 	public Vec3 div  (Vec3 v) {return new Vec3(x / v.x, y / v.y, z / v.z);}
 	public Vec3 mult (Vec3 v) {return new Vec3(x * v.x, y * v.y, z * v.z);}
 	
-	public Vec3 add (double e){return add (new Vec3(e));}
-	public Vec3 sub (double e){return sub (new Vec3(e));}
-	public Vec3 div (double e){return div (new Vec3(e));}
-	public Vec3 mult(double e){return mult(new Vec3(e));}
+	public Vec3 add (float e){return add (new Vec3(e));}
+	public Vec3 sub (float e){return sub (new Vec3(e));}
+	public Vec3 div (float e){return div (new Vec3(e));}
+	public Vec3 mult(float e){return mult(new Vec3(e));}
 	
 	//Calculates the dot product of 2 vectors
-	public double dot(Vec3 v) {return (x * v.x + y * v.y +  z * v.z);}
+	public float dot(Vec3 v) {return (x * v.x + y * v.y +  z * v.z);}
 	
 	//Calculates the cross product
 	public Vec3 cross(Vec3 v){
@@ -33,14 +33,14 @@ public class Vec3{
 	}
 	
 	//Measurments of a vector
-	public double length() {return Math.sqrt(norm());}
-	public double norm()   {return dot(this);}
+	public float length() {return (float) Math.sqrt(norm());}
+	public float norm()   {return dot(this);}
 	
 	//Normalize the vector
 	public void normalize() {
-		double n = length();
+		float n = length();
 		if(n > 0) {
-			double factor = 1 / n;
+			float factor = 1 / n;
 			x = x * factor;
 			y = y * factor;
 			z = z * factor;
