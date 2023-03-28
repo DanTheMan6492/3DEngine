@@ -2,14 +2,24 @@ package geometry;
 
 public class PerspectiveProjection {
 
-	public Vec2 computePixelCoordinates(Vec3 pWorld, Matrix44 WtC, float cWidth, float cHeight, int iWidth, int iHeight) {
-		Vec3 pCamera = WtC.multPoint(pWorld);
+	static float VPD = 1;
+	static float cWidth = 1280;
+	static float cHeight = 720;
+	
+	public static Vec2 computePixelCoordinates(Vec3 pWorld, Matrix44 WtC) {
+		Vec3 pCamera = WtC.multPoint(pWorld); //convert the global coordinates to camera coordinates
 		Vec2 pScreen = new Vec2();
-		pScreen.x = pCamera.x / -pCamera.z;
-		pScreen.y = pCamera.y / -pCamera.z;
 		Vec2 pNDC = new Vec2();
-		pNDC.x = (pScreen.x + cWidth  * 0.5f) /  cWidth;
-		pNDC.y = (pScreen.x + cHeight * 0.5f) / cHeight;
-		return new Vec2((int)(pNDC.x * iWidth), (int)((1 - pNDC.y) * iHeight));
+		
+		//calculate the 2d coordinates of the point
+		pScreen.x = VPD * pCamera.x / -pCamera.z;
+		pScreen.y = VPD * pCamera.y / -pCamera.z;
+		
+		//scale it to the size of the canvas
+		pNDC.x = (pScreen.x + cWidth  * 0.5f);
+		pNDC.y = (pScreen.x + cHeight * 0.5f);
+		
+		return new Vec2((int)(pNDC.x), (int)(1 - pNDC.y));
 	}
+	
 }
