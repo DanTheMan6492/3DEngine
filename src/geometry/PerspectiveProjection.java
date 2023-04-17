@@ -15,11 +15,13 @@ public class PerspectiveProjection {
 		pScreen.x = VPD * pCamera.x / -pCamera.z;
 		pScreen.y = VPD * pCamera.y / -pCamera.z;
 		
+		//System.out.println(pScreen);
 		//scale it to the size of the canvas
 		pNDC.x = (pScreen.x + cWidth  * 0.5f);
-		pNDC.y = (pScreen.x + cHeight * 0.5f);
+		pNDC.y = (pScreen.y + cHeight * 0.5f);
 		
-		return new Vec2((int)(pNDC.x), (int)(1 - pNDC.y));
+		
+		return new Vec2((int)(pNDC.x), (int)(cHeight - pNDC.y));
 	}
 	
 }

@@ -8,7 +8,7 @@ public class Vec3{
 	public Vec3() {}
 	public Vec3(float xx) {x = xx; y = xx; z = xx;}
 	public Vec3(float xx, float yy, float zz) {x = xx; y = yy; z = zz;}
-	
+	public Vec3(Vec3 o) {x = o.x; y = o.y; z = o.z;}
 	/* Methods */
 	
 	//Operations

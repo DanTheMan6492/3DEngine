@@ -2,7 +2,8 @@ package geometry;
 
 public class Vec2{
 	/* Instance Variables */
-	float x, y;
+	public float x;
+	public float y;
 	
 	/* Constructors */
 	

@@ -3,7 +3,7 @@ package geometry;
 public class Matrix44 {
 	
 	/* Instance Variables */
-	float x[][] = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
+	public float x[][] = {{1,0,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,1}};
 	
 	/* Constructors */
 	public Matrix44() {}
@@ -55,6 +55,34 @@ public class Matrix44 {
 		b = o.x * x[0][1] + o.y * x[1][1] + o.z *x[2][1];
 		c = o.x * x[0][2] + o.y * x[1][2] + o.z *x[2][2];
 		return new Vec3(a, b, c);
+	}
+	
+	public static Matrix44 pointAt(Vec3 pos, Vec3 target, Vec3 up) {
+		Vec3 forward = target.sub(pos);
+		forward.normalize();
+		
+		Vec3 a = forward.mult(up.dot(forward));
+		Vec3 newUp = up.sub(a);
+		newUp.normalize();
+		
+		Vec3 newRight = newUp.cross(forward);
+		
+		Matrix44 m = new Matrix44();
+		m.x[0][0] = newRight.x;
+		m.x[1][0] = newUp.x;
+		m.x[2][0] = forward.x;
+		m.x[3][0] = pos.x;
+		
+		m.x[0][1] = newRight.y;
+		m.x[1][1] = newUp.y;
+		m.x[2][1] = forward.y;
+		m.x[3][1] = pos.y;
+		
+		m.x[0][2] = newRight.z;
+		m.x[1][2] = newUp.z;
+		m.x[2][2] = forward.z;
+		m.x[3][2] = pos.z;
+		return m;
 	}
 	
 	public Matrix44 inverse() {
