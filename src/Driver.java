@@ -96,7 +96,6 @@ public class Driver extends JPanel implements MouseListener, ActionListener, Key
 		Matrix44 matView = matCam.inverse();
 		ArrayList<Triangle> toDraw = new ArrayList<Triangle>();
 		
-		
 		for(Triangle t : meshCube.tris) {
 			
 			//apply rotation
