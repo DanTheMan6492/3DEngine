@@ -112,6 +112,7 @@ public class Driver extends JPanel implements MouseListener, ActionListener, Key
 			
 			//apply transformation
 			Triangle trans = new Triangle(rotate.p);
+			
 
 			trans.p[0].z = rotate.p[0].z + 6.0f;
 			trans.p[1].z = rotate.p[1].z + 6.0f;
